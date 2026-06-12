@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservas - Projeto Full Stack</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-hotel brand-icon"></i>
+                <div class="brand-text">
+                    <span class="brand-title">Hotel</span>
+                    <span class="brand-sub">Reservas</span>
+                </div>
+            </div>
+            <nav class="menu">
+                <a href="#" class="menu-item active" id="menu-quartos" onclick="showScreen('tela-lista-quartos')">
+                    <i class="fa-solid fa-house"></i> Quartos
+                </a>
+                <a href="#" class="menu-item" onclick="alert('Módulo geral de Reservas em desenvolvimento.')">
+                    <i class="fa-solid fa-calendar-days"></i> Reservas
+                </a>
+                <a href="#" class="menu-item" onclick="alert('Projeto Full Stack - Desenvolvido em 2026.')">
+                    <i class="fa-solid fa-circle-info"></i> Sobre
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="tela-lista-quartos" class="screen">
+                <div class="screen-header">
+                    <div>
+                        <h2>Quartos Cadastrados</h2>
+                        <p class="subtitle">Gerencie os quartos do hotel</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="showScreen('tela-cadastro-quarto')">
+                        <i class="fa-solid fa-plus"></i> Novo Quarto
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nº Quarto</th>
+                                <th>Tipo</th>
+                                <th class="text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quartos-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="tela-cadastro-quarto" class="screen hidden">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Cadastro de Quarto</h2>
+                        <p class="subtitle">Informe os dados do novo quarto</p>
+                    </div>
+                    <form id="form-quarto">
+                        <div class="form-group">
+                            <label>Número do Quarto</label>
+                            <input type="text" id="quarto-numero" placeholder="Ex: 101" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo do Quarto</label>
+                            <select id="quarto-tipo" required>
+                                <option value="" disabled selected>Selecione o tipo</option>
+                                <option value="Standard">Standard</option>
+                                <option value="Luxo">Luxo</option>
+                                <option value="Suíte">Suíte</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="showScreen('tela-lista-quartos')">Voltar</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="tela-reservas-quarto" class="screen hidden">
+                <div class="screen-header">
+                    <div>
+                        <h2>Reservas do Quarto <span id="label-num-quarto">101</span></h2>
+                        <p class="subtitle">Tipo: <span id="label-tipo-quarto">Standard</span></p>
+                    </div>
+                    <button class="btn btn-primary" onclick="showScreen('tela-cadastro-reserva')">
+                        <i class="fa-solid fa-plus"></i> Nova Reserva
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Hóspede</th>
+                                <th>Entrada</th>
+                                <th>Saída</th>
+                                <th class="text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservas-table-body">
+                            </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-secondary" style="margin-top: 20px;" onclick="showScreen('tela-lista-quartos')">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar
+                </button>
+            </section>
+
+            <section id="tela-cadastro-reserva" class="screen hidden">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Cadastro de Reserva</h2>
+                        <p class="subtitle">Quarto: <span id="form-reserva-num-quarto">101</span> - <span id="form-reserva-tipo-quarto">Standard</span></p>
+                    </div>
+                    <form id="form-reserva">
+                        <div class="form-group">
+                            <label>Nome do Hóspede</label>
+                            <input type="text" id="reserva-hospede" placeholder="Ex: João da Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Entrada</label>
+                            <input type="date" id="reserva-entrada" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Saída</label>
+                            <input type="date" id="reserva-saida" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Cadastrar Reserva</button>
+                        <button type="button" class="btn btn-secondary btn-block" onclick="showScreen('tela-reservas-quarto')">Voltar</button>
+                    </form>
+                </div>
+            </section>
+
+            <footer class="footer-copyright">
+                © 2024 Hotel Reservas - Projeto Full Stack
+            </footer>
+        </main>
+    </div>
+
+    <div id="modal-excluir-quarto" class="modal-overlay hidden">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-excluir-quarto')">&times;</button>
+            <div class="modal-icon alert-icon">
+                <i class="fa-solid fa-exclamation"></i>
+            </div>
+            <h3>Excluir Quarto</h3>
+            <p>Deseja realmente excluir o quarto <span id="modal-quarto-id-label">101</span>?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-modal-cancel" onclick="closeModal('modal-excluir-quarto')">Cancelar</button>
+                <button class="btn btn-modal-danger" id="confirmar-exclusao-quarto-btn">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-excluir-reserva" class="modal-overlay hidden">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-excluir-reserva')">&times;</button>
+            <div class="modal-icon alert-icon">
+                <i class="fa-solid fa-exclamation"></i>
+            </div>
+            <h3>Excluir Reserva</h3>
+            <p>Deseja realmente excluir esta reserva?</p>
+            <div class="modal-buttons">
+                <button class="btn btn-modal-cancel" onclick="closeModal('modal-excluir-reserva')">Cancelar</button>
+                <button class="btn btn-modal-danger" id="confirmar-exclusao-reserva-btn">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
