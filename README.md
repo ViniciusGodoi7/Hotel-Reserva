@@ -208,25 +208,25 @@ ou utilize a extensão Live Server do VS Code.
 ## Página Inicial
 
 <p align="center">
-  <img src="./print1.png" width="900">
+  <img src="wireframes/print1.png" width="900">
 </p>
 
 ## Gerenciamento de Quartos
 
 <p align="center">
-  <img src="./print2.png" width="900">
+  <img src="wireframes/print2.png" width="900">
 </p>
 
 ## Gerenciamento de Reservas
 
 <p align="center">
-  <img src="./print3.png" width="900">
+  <img src="wireframes/print3.png" width="900">
 </p>
 
 ## Interface Responsiva
 
 <p align="center">
-  <img src="./print4.png" width="900">
+  <img src="wireframes/print4.png" width="900">
 </p>
 
 ---
